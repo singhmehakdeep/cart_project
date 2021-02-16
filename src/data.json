@@ -1,0 +1,58 @@
+{
+    "products":[
+        {
+        "id":"dress1",
+        "title":"Dress 1 titleeeee",
+        "description":"des Dress 1 titleeeee",
+        "price":19,
+        "availableSizes":["XL","XXl"],
+        "image":"/images/kanikaMann.jpg"
+        },
+
+        {
+            "id":"dress1",
+            "title":"Dress 1 titleeeee",
+            "description":"des Dress 1 titleeeee",
+            "price":19,
+            "availableSizes":["XL","XXl"],
+            "image":"/images/kanikaMann.jpg"
+        },
+        {
+            "id":"dress1",
+            "title":"Dress 1 titleeeee",
+            "description":"des Dress 1 titleeeee",
+            "price":19,
+            "availableSizes":["XL","XXl"],
+            "image":"/images/kanikaMann.jpg"
+        },
+        {
+            "id":"dress1",
+            "title":"Dress 1 titleeeee",
+            "description":"des Dress 1 titleeeee",
+            "price":19,
+            "availableSizes":["XL","XXl"],
+            "image":"/images/kanikaMann.jpg"
+            },
+    
+            {
+                "id":"dress1",
+                "title":"Dress 1 titleeeee",
+                "description":"des Dress 1 titleeeee",
+                "price":19,
+                "availableSizes":["XL","XXl"],
+                "image":"/images/kanikaMann.jpg"
+            },
+            {
+                "id":"dress1",
+                "title":"Dress 1 titleeeee",
+                "description":"des Dress 1 titleeeee",
+                "price":19,
+                "availableSizes":["XL","XXl"],
+                "image":"/images/kanikaMann.jpg"
+            }
+    
+            
+    
+            
+    ]
+}
