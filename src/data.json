@@ -1,53 +1,53 @@
 {
     "products":[
         {
-        "id":"dress1",
+        "id":"1",
         "title":"Dress 1 titleeeee",
         "description":"des Dress 1 titleeeee",
-        "price":19,
-        "availableSizes":["XL","XXl"],
+        "price":12,
+        "availableSizes":["XL","XXL","M"],
         "image":"/images/kanikaMann.jpg"
         },
 
         {
-            "id":"dress1",
+            "id":"3",
             "title":"Dress 1 titleeeee",
             "description":"des Dress 1 titleeeee",
-            "price":19,
-            "availableSizes":["XL","XXl"],
+            "price":13,
+            "availableSizes":["XL","XXL","S"],
             "image":"/images/kanikaMann.jpg"
         },
         {
-            "id":"dress1",
+            "id":"4",
             "title":"Dress 1 titleeeee",
             "description":"des Dress 1 titleeeee",
-            "price":19,
-            "availableSizes":["XL","XXl"],
+            "price":16,
+            "availableSizes":["XL","XXL","S"],
             "image":"/images/kanikaMann.jpg"
         },
         {
-            "id":"dress1",
+            "id":"43",
             "title":"Dress 1 titleeeee",
             "description":"des Dress 1 titleeeee",
-            "price":19,
-            "availableSizes":["XL","XXl"],
+            "price":29,
+            "availableSizes":["XL","XXL","XS"],
             "image":"/images/kanikaMann.jpg"
             },
     
             {
-                "id":"dress1",
+                "id":"42",
                 "title":"Dress 1 titleeeee",
                 "description":"des Dress 1 titleeeee",
-                "price":19,
-                "availableSizes":["XL","XXl"],
+                "price":91,
+                "availableSizes":["XL","XXL","L"],
                 "image":"/images/kanikaMann.jpg"
             },
             {
-                "id":"dress1",
+                "id":"88",
                 "title":"Dress 1 titleeeee",
                 "description":"des Dress 1 titleeeee",
-                "price":19,
-                "availableSizes":["XL","XXl"],
+                "price":33,
+                "availableSizes":["XL","XXL","M"],
                 "image":"/images/kanikaMann.jpg"
             }
     
