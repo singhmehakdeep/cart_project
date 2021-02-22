@@ -1,12 +1,13 @@
-import React , { useState } from "react"
+import React , { useState, } from "react"
 import { Cart } from "./components/Cart";
 import { Filter } from "./components/Filter";
 import Products from "./components/Products"
 import data from "./data.json"
+import {useStateCallback} from "./Hooks/useStateCallback"
 function App() {
-const [state,setState] = useState({
+const [state,setState] = useStateCallback({
   products:data.products,
-  cartItems:[],
+  cartItems: localStorage.getItem("cartItems") ? JSON.parse(localStorage.getItem("cartItems")) : [],
   size:"",
   sort:"",
 })
@@ -25,6 +26,7 @@ const addToCart =(product) => {
     cartItems.push({...product, count:1})
   }
   setState({...state,cartItems:cartItems})
+  localStorage.setItem("cartItems",JSON.stringify(cartItems));
 
 
 
@@ -72,7 +74,13 @@ const removeFromCart =(product) => {
    setState({
      ...state,
      cartItems:state.cartItems.filter(x => (x.id !== product.id))
-  });
+  },(state) => {localStorage.setItem("cartItems",JSON.stringify(state.cartItems));});
+  // localStorage.setItem("cartItems",JSON.stringify(state.cartItems));
+  
+}
+
+const createOrder = (order) => {
+  alert("Need to save order " + order.name)
 }
   return (
     <div className="grid-container">
@@ -98,6 +106,7 @@ const removeFromCart =(product) => {
           <div className="sidebar">
             <Cart 
             cartItems={state.cartItems}
+            createOrder={createOrder}
             removeFromCart={(i) => removeFromCart(i)}
             >
             </Cart>
