@@ -100,7 +100,7 @@ function Products(props) {
     )
 }
 let testobj = connect((state) => { 
-    return{products: state.productReducer.items}}
+    return{products: state.products.filteredItems}}
 , {
     fetchProducts,
   }
