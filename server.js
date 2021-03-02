@@ -2,9 +2,10 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const shortId = require("shortid");
-
+var cors = require('cors')
 
 const app = express();
+app.use(cors());
 app.use(bodyParser.json());
 
 mongoose.connect("mongodb://localhost/react-shopping-cart-db",{
@@ -18,12 +19,13 @@ const Product = mongoose.model("products",new mongoose.Schema({
     title:String,
     description:String,
     image:String,
-    price:String,
+    price:Number,
     availableSizes:[String],
 }));
 
 app.get("/api/products",async(req,res) => {
     const products = await Product.find({});
+    console.log("get prod rqst . ..")
     res.send(products);
 })
 
@@ -33,8 +35,9 @@ app.post("/api/products",async(req,res) => {
     res.send(saveProduct)
 })
 
-app.delete("/app/products/:id",async (req,res) => {
-    const deleteProduct = await Product.findById(req.param.id);
+app.delete("/api/products/:id",async (req,res) => {
+    // const deleteProduct = await Product.findById(req.param.id);
+    const deleteProduct = await Product.deleteMany({price:"12"});
     res.send(deleteProduct);
 })
 
