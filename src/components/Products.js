@@ -5,6 +5,7 @@ import Zoom from "react-reveal/Zoom"
 import Modal from "react-modal"
 import { connect } from 'react-redux';
 import { fetchProducts } from '../actions/productActions';
+import { addToCart } from '../actions/cartActions';
 
 function Products(props) {
     const [modalState, modalSetState] = useState(null)
@@ -42,7 +43,7 @@ function Products(props) {
                                             <div>
                                                 {formatCurrency(product.price)}
                                             </div>
-                                            <button onClick={() => props.addToCart(product)} className="button primary">
+                                            <button onClick={() => props.addToCart(props.cartItems,product)} className="button primary">
                                                 Add to cart
                                             </button>
                                         </div>
@@ -100,9 +101,12 @@ function Products(props) {
     )
 }
 let testobj = connect((state) => { 
-    return{products: state.products.filteredItems}}
+    return{products: state.products.filteredItems,
+            cartItems:state.cart.cartItems
+    }}
 , {
     fetchProducts,
+    addToCart
   }
   )(Products);
     

@@ -1,6 +1,6 @@
 import React, { useState, } from "react"
 import { Provider } from "react-redux";
-import { Cart } from "./components/Cart";
+import Cart  from "./components/Cart";
 import Filter from "./components/Filter";
 import Products from "./components/Products"
 import data from "./data.json"
@@ -118,10 +118,11 @@ function App() {
             </div>
             <div className="sidebar">
               <Cart
-                cartItems={state.cartItems}
-                createOrder={createOrder}
-                removeFromCart={(i) => removeFromCart(i)}
+                
               >
+                {/* cartItems={state.cartItems}
+                createOrder={createOrder}
+                removeFromCart={(i) => removeFromCart(i)} */}
               </Cart>
             </div>
 
