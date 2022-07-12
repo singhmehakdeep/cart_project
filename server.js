@@ -8,11 +8,17 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-mongoose.connect("mongodb://localhost/react-shopping-cart-db",{
+my_mongo_address = ""
+
+mongoose.connect(my_mongo_address,{
     useNewUrlParser:true,
     useCreateIndex:true,
-    useUnifiedTopology:true
-})
+    useUnifiedTopology:true,
+},
+(err) => {
+    if(err) console.log(err) 
+    else console.log("mongdb is connected");
+   })
 
 const Product = mongoose.model("products",new mongoose.Schema({
     _id:{type:String,default: shortId.generate},
@@ -23,6 +29,7 @@ const Product = mongoose.model("products",new mongoose.Schema({
     availableSizes:[String],
 }));
 
+
 app.get("/api/products",async(req,res) => {
     const products = await Product.find({});
     console.log("get prod rqst . ..")
@@ -30,6 +37,7 @@ app.get("/api/products",async(req,res) => {
 })
 
 app.post("/api/products",async(req,res) => {
+    console.log("post rqst..")
     const newProduct = new Product(req.body);
     const saveProduct = await newProduct.save(); 
     res.send(saveProduct)
