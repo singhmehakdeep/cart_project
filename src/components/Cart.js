@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import formatCurrency from './util';
-import Fade from "react-reveal/Fade"
+// import Fade from "react-reveal/Fade"
 import { connect } from 'react-redux';
 import { removeFromCart } from '../actions/cartActions';
 
@@ -41,7 +41,7 @@ import { removeFromCart } from '../actions/cartActions';
             </div>
             <div>
                 <div className="cart">
-                    <Fade left cascade>
+                    {/* <Fade left cascade> */}
                         <ul className="cart-items">
                             {cartItems.map((item) => (
                                 <li key={item.id}>
@@ -58,7 +58,7 @@ import { removeFromCart } from '../actions/cartActions';
                                 </li>
                             ))}
                         </ul>
-                    </Fade>
+                    {/* </Fade> */}
                 </div>
                 {cartItems.length !== 0 && (
                     <div>
@@ -74,7 +74,7 @@ import { removeFromCart } from '../actions/cartActions';
                         </div>
                         {state.showCheckOut && (
                             <div className="cart">
-                                <Fade right cascade>
+                                {/* <Fade right cascade> */}
                                     <form onSubmit={createOrder}>
                                         <ul className="form-container">
                                             <li>
@@ -94,7 +94,7 @@ import { removeFromCart } from '../actions/cartActions';
                                             </li>
                                         </ul>
                                     </form>
-                                </Fade>
+                                {/* </Fade> */}
 
                             </div>
                         )}

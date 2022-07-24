@@ -8,7 +8,7 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-my_mongo_address = ""
+my_mongo_address = 'mongodb://127.0.0.1:27017'
 
 mongoose.connect(my_mongo_address,{
     useNewUrlParser:true,

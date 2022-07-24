@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import formatCurrency from './util'
-import Fade from "react-reveal/Fade"
-import Zoom from "react-reveal/Zoom"
+// import Fade from "react-reveal/Fade"
+// import Zoom from "react-reveal/Zoom"
 import Modal from "react-modal"
 import { connect } from 'react-redux';
 import { fetchProducts } from '../actions/productActions';
@@ -24,7 +24,7 @@ function Products(props) {
 
     return (
         <div>
-            <Fade bottom cascade>
+            {/* <Fade bottom cascade> */}
                 { 
                     !props.products ? (<div>...loading</div>)
                         : 
@@ -53,10 +53,10 @@ function Products(props) {
                         </ul>
                 )
                 }
-                 </Fade>
+                 {/* </Fade> */}
             {modalState && (
                 <Modal isOpen={true} onRequestClose={closeModal}>
-                    <Zoom>
+                    {/* <Zoom> */}
                         <div>Modal</div>
                         <button onClick={closeModal} className="close-modal">X</button>
                         <div className="product-details">
@@ -93,7 +93,7 @@ function Products(props) {
                             </div>
                         </div>
 
-                    </Zoom>
+                    {/* </Zoom> */}
                 </Modal>
             )}
 
