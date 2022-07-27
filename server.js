@@ -44,7 +44,7 @@ app.post("/api/products",async(req,res) => {
 })
 
 app.delete("/api/products/:id",async (req,res) => {
-    // const deleteProduct = await Product.findById(req.param.id);
+    // const deleteProduct = await Product.findById(req.param.id); test
     const deleteProduct = await Product.deleteMany({price:"12"});
     res.send(deleteProduct);
 })
