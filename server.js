@@ -1,7 +1,8 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-const shortId = require("shortid");
+
+const Product = require('./models/product')
 var cors = require('cors')
 
 const app = express();
@@ -19,16 +20,6 @@ mongoose.connect(my_mongo_address,{
     if(err) console.log(err) 
     else console.log("mongdb is connected");
    })
-
-const Product = mongoose.model("products",new mongoose.Schema({
-    _id:{type:String,default: shortId.generate},
-    title:String,
-    description:String,
-    image:String,
-    price:Number,
-    availableSizes:[String],
-}));
-
 
 app.get("/api/products",async(req,res) => {
     const products = await Product.find({});
