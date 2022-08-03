@@ -7,7 +7,7 @@ my_mongo_address = 'mongodb://127.0.0.1:27017'
 
 mongoose.connect(my_mongo_address,{
     useNewUrlParser:true,
-    useCreateIndex:true,
+    // useCreateIndex:true,
     useUnifiedTopology:true,
 },
 (err) => {

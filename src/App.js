@@ -1,5 +1,6 @@
 import React, { useState, } from "react"
 import { Provider } from "react-redux";
+import AddProducts from "./components/AddProducts";
 import Cart  from "./components/Cart";
 import Filter from "./components/Filter";
 import Products from "./components/Products"
@@ -9,6 +10,10 @@ import { useStateCallback } from "./Hooks/useStateCallback"
 import store from './store';
 
 function App() {
+
+  const [viewAsAdmin, setViewAsAdmin] = useState(false);
+  const [addProductView, setAddProductView] = useState(false);
+  const [editProductId, setEditProductId] = useState();
 
   const [state, setState] = useStateCallback({
     products: data.products,
@@ -33,8 +38,15 @@ function App() {
     setState({ ...state, cartItems: cartItems })
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
 
+  }
+  const populateEditPage = (id) => {
+    setEditProductId(id)
+    setAddProductView(true)
+  }
 
-
+  const viewAsAdminfunc = () => {
+    setViewAsAdmin(true);
+    setAddProductView(false)
   }
 
   // const filterProducts = (event) => {
@@ -90,43 +102,60 @@ function App() {
   const createOrder = (order) => {
     alert("Need to save order " + order.name)
   }
+
   return (
     <Provider store={store}>
       <div className="grid-container">
         <header className="">
-          <a href="/">React Shopping Cart</a>
+          <a  className="w-88" href="/">React Shopping Cart</a>
+          {!viewAsAdmin && <span  className="admin-button" onClick={() => {viewAsAdminfunc()}}>View as admin</span>}
+          {viewAsAdmin && <span   className="admin-button" onClick={() => setAddProductView(true)}>Add Product</span>}
+
         </header>
         <main>
-          <div className="content">
-            <div className="main">
-              <Filter
-              //  count={state.products.length}
-              //   size={state.size}
-              //   sort={state.sort}
-              //   filterProducts={filterProducts}
-              //   sortProducts={(e) => sortProducts(e)}
+          {!addProductView ?
+            <div className="content">
+              <div className="main">
+                <Filter
+                //  count={state.products.length}
+                //   size={state.size}
+                //   sort={state.sort}
+                //   filterProducts={filterProducts}
+                //   sortProducts={(e) => sortProducts(e)}
 
-              >
-
-              </Filter>
-              <Products
-                addToCart={(product) => { addToCart(product) }}
-                // products={state.products}
                 >
 
-                </Products>
-            </div>
-            <div className="sidebar">
-              <Cart
-                
-              >
-                {/* cartItems={state.cartItems}
-                createOrder={createOrder}
-                removeFromCart={(i) => removeFromCart(i)} */}
-              </Cart>
-            </div>
+                </Filter>
+                <Products
+                  addToCart={(product) => { addToCart(product) }}
+                  editProduct={(id) => populateEditPage(id)}
+                  adminView={viewAsAdmin}
+                  // products={state.products}
+                  >
 
-          </div>
+                  </Products>
+              </div>
+              {!viewAsAdmin && <div className="sidebar">
+                <Cart
+                  
+                >
+                  {/* cartItems={state.cartItems}
+                  createOrder={createOrder}
+                  removeFromCart={(i) => removeFromCart(i)} */}
+                </Cart>
+              </div>}
+
+            </div>
+            :
+            <div>
+              {editProductId ? 
+              <AddProducts product_id={editProductId} />
+              :
+              <AddProducts product_id={null} />
+
+            }
+            </div>
+          }
         </main>
         <footer>
           All right is reserved

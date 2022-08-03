@@ -49,6 +49,9 @@ import { removeFromCart } from '../actions/cartActions';
                                         <img src={item.image} alt={cartItems.title}></img>
                                     </div>
                                     <div>
+                                        {item.availableSizes[0]}
+                                    </div>
+                                    <div>
                                         <div>{item.title}</div>
                                         <div className="right">{formatCurrency(item.price)} x {item.count} {" "}</div>
                                         <button onClick={() => props.removeFromCart(props.cartItems,item)}>
