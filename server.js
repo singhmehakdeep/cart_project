@@ -73,8 +73,14 @@ app.post("/api/products", upload.single("image"), async(req,res) => {
     res.send(saveProduct)
 })
 
-app.put("api/products/:id",async (req,res) => {
-    console.log("update")
+app.put("/api/products/:id", upload.single("image"), async(req,res) => {
+    console.log("updatesdsfdfsdgsfdg")
+    let product = req.body
+    product.image = "/images/" + req.file?.filename 
+    console.log(product)
+    const updatedProduct = await Product.findByIdAndUpdate(req.params.id, product)
+    console.log(updatedProduct,"---------")
+    res.send(updatedProduct);
 })
 
 app.delete("/api/products/:id",async (req,res) => {

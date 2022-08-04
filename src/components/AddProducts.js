@@ -40,41 +40,34 @@ const AddProducts = (props) => {
     return(
         <>
         
-        <div className='form-container'>
-        
-            
-            
+        <div className='form-container-ap'>
             <Formik
             initialValues={{ }}
             validate={values => {
-                const errors = {};
-                // if (!values.email) {
-                //   errors.email = 'Required';
-                // } else if (
-                //   !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-                // ) {
-                //   errors.email = 'Invalid email address';
-                // }
-                // return errors;
             }}
             onSubmit={async(values, { setSubmitting }) => {
-
-                console.log(values,"dfvd")
-
                 const formData = new FormData();
                 formData.append('title', title);
                 formData.append('description', description);
-                formData.append('price', price);
+                if (price)formData.append('price', price);
                 formData.append('image', selectedFile);
                 selectedSizes.forEach(size => formData.append('availableSizes[]', size))
-                
+                if(props.product_id){
+                    const requestOptions = {
+                        method: 'PUT',
+                        body: formData
+                    };
+                    const response = await fetch(`http://localhost:4000/api/products/${props.product_id}`, requestOptions);
+                    const data = await response.json();
+
+                }else{                
                 const requestOptions = {
                     method: 'POST',
-                    // headers: { 'Content-Type': 'multipart/form-data' },
                     body: formData
                 };
                 const response = await fetch('http://localhost:4000/api/products', requestOptions);
                 const data = await response.json();
+                }
                 setSubmitting(false);
                 // this.setState({ postId: data.id });
             }}

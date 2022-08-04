@@ -95,7 +95,7 @@ function Products(props) {
                                     <button
                                         className="button primary"
                                         onClick={() => {
-                                            props.addToCart(modalState);
+                                            props.addToCart(props.cartItems,modalState);
                                             closeModal();
                                         }}
                                     >
