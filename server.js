@@ -7,6 +7,7 @@ const Product = require('./models/product')
 var cors = require('cors')
 const passport = require("passport");
 const users = require("./routes/api/users");
+const keys = require('./config/keys')
 
 const app = express();
 app.use(cors());
@@ -37,11 +38,11 @@ const storage = multer.diskStorage({
   
 const upload = multer({storage: storage})
 
-my_mongo_address = 'mongodb://127.0.0.1:27017'
+// store in env file
+my_mongo_address = keys.mongoURI
 
 mongoose.connect(my_mongo_address,{
     useNewUrlParser:true,
-    // useCreateIndex:true,
     useUnifiedTopology:true,
 },
 (err) => {
@@ -79,13 +80,10 @@ app.put("/api/products/:id", upload.single("image"), async(req,res) => {
     product.image = "/images/" + req.file?.filename 
     console.log(product)
     const updatedProduct = await Product.findByIdAndUpdate(req.params.id, product)
-    console.log(updatedProduct,"---------")
     res.send(updatedProduct);
 })
 
 app.delete("/api/products/:id",async (req,res) => {
-    // const deleteProduct = await Product.findById(req.param.id);
-    console.log(req.params)
     const deleteProduct = await Product.deleteOne({_id:req.params.id});
     res.send(deleteProduct);
 })

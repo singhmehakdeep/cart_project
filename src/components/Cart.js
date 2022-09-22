@@ -23,7 +23,6 @@ import { ToastContainer, toast } from 'react-toastify';
             address: state.address,
             cartItems: cartItems,
         }
-        // props.createOrder(order);
         toast("Your Order is Placed!")
 
     }

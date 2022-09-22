@@ -112,7 +112,7 @@ const Login = () => {
           {!isLoginPage && <div className='w-50 mb-15 label'>
               <label className='block' >Confirm Password</label>
               <input
-                type="password2"
+                type="password"
                 name="password2"
                 onChange={handleChange}
                 onBlur={handleBlur}
